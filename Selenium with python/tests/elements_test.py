@@ -1,59 +1,38 @@
 import random
-import time
+# import time
 from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage, UploadAndDownloadPage, DynamicPropertiesPage
 from selenium import webdriver
 
-# from pages.base_page import BasePage
-# from locators.elements_page_locators import TextBoxPageLocators
-
-# # def test(driver):
-#     page = BasePage(driver, 'https://rozetka.com.ua/ua/')
-#     page.open()
-#     time.sleep(3)
-
+"""Test elements"""
 class TestElements:
+    
+    """Text Box testing"""
     class TestTextBox:
-
         def test_text_box(self, driver):
             text_box_page = TextBoxPage(driver, 'https://demoqa.com/text-box')
             text_box_page.open()
-            # input_data = text_box_page.fill_all_fields()
-            # output_date = text_box_page.check_filled_form()
             full_name, email, current_address, permanent_address = text_box_page.fill_all_fields()
-            # time.sleep(10)
             output_name, output_email, output_current_address, output_permanent_address = text_box_page.check_filled_form()
-            # time.sleep(10)
-
-            # print(output_name, output_email, current_address, permanent_address)
-            # print(text_box_page.check_filled_form())
-            # print(output_name)
-            # print(output_email)
-            # print(output_current_address)
-            # print(output_permanent_address)
-            # """Більше читабельно"""
             assert full_name == output_name, "the full_name does not math"
             assert email == output_email, "the email does not math"
             assert current_address == output_current_address, "the current_address does not math"
             assert permanent_address == output_permanent_address, "the permanent_address does not math"
-            # """Менше читабельно"""
-            # assert input_data == output_date
-
+           
+    """Checkbox testing"""
     class TestCheckBox:
         def test_check_box(self, driver):
             check_box_page = CheckBoxPage(driver, 'https://demoqa.com/checkbox')
             check_box_page.open()
             check_box_page.open_full_list()
             check_box_page.click_random_checkbox()
-            # time.sleep(5)
             input_checkbox = check_box_page.get_checked_checkboxes()
             output_result = check_box_page = get_output_result()
             print(input_checkbox)
             print(output_result)
             assert input_checkbox == output_result, 'checkboxes have not been selected'
 
-
+    """Radio button testing"""
     class TestRadioButton:
-
         def test_radio_button(self, driver):
             radio_button_page = RadioButtonPage(driver, 'https://demoqa.com/radio-button')
             radio_button_page.open()
@@ -67,14 +46,12 @@ class TestElements:
             assert output_impressive == 'Impressive', "'Impressive' have not been selected"
             assert output_no == "No", "'No' have not been selected"
 
-
+    """Web table testing"""
     class TestWebTable:
-
         def test_web_table_add_person(self, driver):
             web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
             web_table_page.open()
             new_person = web_table_page.add_new_person()
-            # time.sleep(5)
             table_result = web_table_page.check_new_added_person()
             web_table_page.check_new_added_person()
             print(new_person)
@@ -97,7 +74,6 @@ class TestElements:
             web_table_page.open()
             lastname = web_table_page.add_new_person()[1]
             web_table_page.search_some_person(lastname)
-            # time.sleep(7)
             age = web_table_page.update_person_info()
             row = web_table_page.check_search_person()
             print(age)
@@ -108,9 +84,7 @@ class TestElements:
             web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
             web_table_page.open()
             email = web_table_page.add_new_person()[3]
-            # time.sleep(3)
             web_table_page.search_some_person(email)
-            # time.sleep(3)
             web_table_page.delete_person()
             text = web_table_page.check_deleted()
             assert text == "No rows found"
@@ -121,7 +95,7 @@ class TestElements:
             count = web_table_page.select_up_to_some_rows()
             assert count == [5, 10, 20, 25, 50, 100], 'The number of rows in the table has not been changed or has changed incorrectly'
 
-
+    """Buttons testing"""
     class TestButtonsPage:
         def test_different_click_on_the_buttons(self, driver):
             button_page = ButtonsPage(driver, 'https://demoqa.com/buttons')
@@ -133,7 +107,7 @@ class TestElements:
             assert right == "You have done a right click", "The right click button was not pressed"
             assert click == "You have done a dynamic click", "The dynamic click button was not pressed"
 
-
+    """Links testing"""
     class TestLinksPage:
 
         def test_check_link(self, driver):
@@ -147,7 +121,8 @@ class TestElements:
             links_page.open()
             response_code = links_page.check_broken_link('https://demoqa.com/bad-request')
             assert response_code == 400, "the link works or the status code in son 400"
-
+            
+    """Upload file testing"""
     class TestUploadAndDownload:
         def test_upload_file(self, driver):
             upload_download_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
@@ -161,8 +136,8 @@ class TestElements:
             check = upload_download_page.download_file()
             assert check is True, "the file has not been downloaded"
 
+    """Dynamic Properties testing"""             
     class TestDynamicPropertiesPage:
-
         def test_dynamic_properties(self, driver):
             dynamic_properties_page = DynamicPropertiesPage(driver, 'https://demoqa.com/dynamic-properties')
             dynamic_properties_page.open()
@@ -180,5 +155,3 @@ class TestElements:
             dynamic_properties_page.open()
             enable = dynamic_properties_page.check_enable_button()
             assert enable is True, 'button did not enable after 5 second'
-
-
