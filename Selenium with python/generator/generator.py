@@ -6,6 +6,7 @@ faker_ru = Faker('ru_RU')
 fake_en = Faker('En')
 Faker.seed()
 
+"""Generating of the random test data to create the person"""
 def generated_person():
     yield Person(
         full_name=faker_ru.first_name() + " " + faker_ru.last_name() + " " + faker_ru.middle_name(),
@@ -19,7 +20,8 @@ def generated_person():
         permanent_address=faker_ru.address(),
         mobile=faker_ru.msisdn(),
     )
-
+    
+"""Random of the file generation"""
 def generated_file():
     path = rf'C:\Automation\filetest{random.randint(0, 999)}.txt'
     file = open(path, 'w+')
@@ -27,12 +29,13 @@ def generated_file():
     file.close()
     return file.name, path
 
+"""Random of the color generation"""
 def generated_color():
     yield Color(
         color_name=["Red", "Blue", "Green", "Yellow", "Purple", "Black", "White", "Voilet", "Indigo", "Magenta", "Aqua"]
     )
 
-
+"""Random of the date generation"""
 def generated_date():
     yield Date(
         year=fake_en.year(),
