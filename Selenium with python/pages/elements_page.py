@@ -9,8 +9,7 @@ import requests
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 
-
-
+"""Test elements"""
 class TextBoxPage(BasePage):
     locators = TextBoxPageLocators()
 
@@ -34,6 +33,7 @@ class TextBoxPage(BasePage):
         permanent_address = self.element_is_present(self.locators.CREATED_PERMANENT_ADDRESS).text.split(':')[1]
         return full_name, email, current_address, permanent_address
 
+"""Checkbox testing"""
 class CheckBoxPage(BasePage):
 
     locators = CheckBoxPageLocators()
@@ -73,6 +73,7 @@ class CheckBoxPage(BasePage):
         return str(data).replace(' ', '').lower()
         # print(data)
 
+"""Radio button testing"""
 class RadioButtonPage(BasePage):
     locators = RadioButtonPageLocators()
 
@@ -85,7 +86,7 @@ class RadioButtonPage(BasePage):
     def get_output_result(self):
         return self.element_is_present(self.locators.OUTPUT_RESULT).text
 
-
+"""Web table testing"""  
 class WebTablePage(BasePage):
     locators = WebTablePageLocators()
 
@@ -168,6 +169,7 @@ class WebTablePage(BasePage):
         list_rows = self.elements_are_visible(self.locators.FULL_PEOPLE_LIST)
         return len(list_rows)
 
+"""Buttons testing"""
 class ButtonsPage(BasePage):
     locators = ButtonsPageLocators()
 
@@ -186,7 +188,7 @@ class ButtonsPage(BasePage):
     def check_clicked_on_the_button(self, element):
         return self.element_is_present(element).text
 
-
+"""Links testing"""
 class LinksPage(BasePage):
 
     locators = LinksPageLocators()
@@ -210,6 +212,7 @@ class LinksPage(BasePage):
             else:
                 return request.status_code
 
+"""Upload file testing"""
 class UploadAndDownloadPage(BasePage):
     locators = UploadAndDownloadPageLocators()
 
@@ -232,6 +235,7 @@ class UploadAndDownloadPage(BasePage):
         os.remove(path_name_file)
         return check_file
 
+"""Dynamic Properties testing"""
 class DynamicPropertiesPage(BasePage):
 
     locators = DynamicPropertiesPageLocators()
@@ -258,12 +262,3 @@ class DynamicPropertiesPage(BasePage):
         except TimeoutException:
             return False
         return True
-
-
-
-
-
-
-
-
-
