@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-# """Test elements"""
+"""Test elements"""
 class TextBoxPageLocators:
     # form fields
     FULL_NAME = (By.CSS_SELECTOR, "input[id='userName']")
@@ -16,13 +16,7 @@ class TextBoxPageLocators:
     CREATED_PERMANENT_ADDRESS = (By.CSS_SELECTOR, '#output #permanentAddress')
 
 
-# """Test checkbox"""
-# class CheckBoxPageLocators:
-#     EXPAND_ALL_BUTTON = (By.CSS_SELECTOR, "button[title='Expand all']")
-#     ITEM_LIST = (By.CSS_SELECTOR, "span[class='rct-title']")
-#     CHECKED_ITEMS = (By.CSS_SELECTOR, "svg[class ='rct-icon rct-icon-check']")
-#     TITLE_ITEM = (".//ancestor::span[@class='rct-text']")
-#     OUTPUT_RESULT = (By.CSS_SELECTOR, "span[class ='text-success']")
+"""Checkbox testing"""
 class CheckBoxPageLocators:
     EXPAND_ALL_BUTTON = (By.CSS_SELECTOR, "button[title='Expand all']")
     ITEM_LIST = (By.CSS_SELECTOR, "span[class='rct-title']")
@@ -31,13 +25,16 @@ class CheckBoxPageLocators:
     # TITLE_ITEM = "span[class='rct-text']"
     OUTPUT_RESULT = (By.CSS_SELECTOR, "span[class='text-success']")
 
+"""Radio button testing"""
 class RadioButtonPageLocators:
     YES_RADIOBUTTON = (By.CSS_SELECTOR, 'label[class^="custom-control"][for="yesRadio"]')
     IMPRESSIVE_RADIOBUTTON = (By.CSS_SELECTOR, 'label[class^="custom-control"][for="impressiveRadio"]')
     NO_RADIOBUTTON = (By.CSS_SELECTOR, 'label[class^="custom-control"][for="noRadio"]')
     OUTPUT_RESULT = (By.CSS_SELECTOR, 'p span[class="text-success"]')
 
+"""Web table testing"""   
 class WebTablePageLocators:
+    
     """Add person form"""
     ADD_BUTTON = (By.CSS_SELECTOR, 'button[id="addNewRecordButton"]')
     FIRSTNAME_INPUT = (By.CSS_SELECTOR, 'input[id="firstName"]')
@@ -47,10 +44,10 @@ class WebTablePageLocators:
     SALARY_INPUT = (By.CSS_SELECTOR, 'input[id="salary"]')
     DEPARTMENT_INPUT = (By.CSS_SELECTOR, 'input[id="department"]')
     SUBMIT = (By.CSS_SELECTOR, 'button[id="submit"]')
+    
     """Table"""
     # FULL_PEOPLE_LIST = (By.CSS_SELECTOR, "div[class='rt-tbody']")
     FULL_PEOPLE_LIST = ("xpath", ".//ancestor::div[@class='rt-tr-group']")
-
     SEARCH_INPUT = (By.CSS_SELECTOR, "input[id='searchBox']")
     DELETE_BUTTON = (By.CSS_SELECTOR, "span[title='Delete']")
     ROW_PARENT = ".//ancestor::div[@class='rt-tr-group']"
@@ -60,6 +57,7 @@ class WebTablePageLocators:
     """Update"""
     UPDATE_BUTTON = (By.CSS_SELECTOR, "span[title='Edit']")
 
+"""Buttons testing"""
 class ButtonsPageLocators:
     DOUBLE_BUTTON = (By.CSS_SELECTOR, "button[id='doubleClickBtn']")
     RIGHT_CLICK_BUTTON = (By.CSS_SELECTOR, "button[id='rightClickBtn']")
@@ -69,18 +67,19 @@ class ButtonsPageLocators:
     SUCCESS_DOUBLE = (By.CSS_SELECTOR, 'p[id="doubleClickMessage"]')
     SUCCESS_RIGHT = (By.CSS_SELECTOR, 'p[id="rightClickMessage"]')
     SUCCESS_CLICK_ME = (By.CSS_SELECTOR, 'p[id="dynamicClickMessage"]')
-
+    
+"""Links testing"""
 class LinksPageLocators:
     SIMPLE_LINK = (By.CSS_SELECTOR, "a[id='simpleLink']")
     BAD_REQUEST = (By.CSS_SELECTOR, "a[id='bad-request']")
-
+    
+"""Upload file testing"""
 class UploadAndDownloadPageLocators:
     UPLOAD_FILE = (By.CSS_SELECTOR, 'input[id="uploadFile"]')
     UPLOADED_RESULT = (By.CSS_SELECTOR, 'p[id="uploadedFilePath"]')
-
     DOWNLOAD_FILE = (By.CSS_SELECTOR, 'a[id="downloadButton"]')
-
-
+    
+"""Dynamic Properties testing"""
 class DynamicPropertiesPageLocators:
     COLOR_CHANGE_BUTTON = (By.CSS_SELECTOR, 'button[id="colorChange"]')
     VISIBLE_AFTER_FIVE_SEC_BUTTON = (By.CSS_SELECTOR, 'button[id="visibleAfter"]')
