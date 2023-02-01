@@ -59,10 +59,7 @@ class CheckBoxPage(BasePage):
         data = []
         for box in checked_list:
             title_item = box.find_element_by_xpath(self.locators.TITLE_ITEM)
-            # title_item = box.find_elements_by_css_selector(self.locators.TITLE_ITEM)
-            # print(title_item.text)
             data.append(title_item.text)
-        # print(data)
         return str(data).replace(' ', '').replace('doc', '').replace('.', '').lower()
 
     def get_output_result(self):
@@ -71,7 +68,7 @@ class CheckBoxPage(BasePage):
         for item in result_list:
             data.append(item.text)
         return str(data).replace(' ', '').lower()
-        # print(data)
+        
 
 """Radio button testing"""
 class RadioButtonPage(BasePage):
@@ -91,7 +88,6 @@ class WebTablePage(BasePage):
     locators = WebTablePageLocators()
 
     def add_new_person(self):
-        # count = random.randint(1,3)
         count = 1
         while count != 0:
             person_info = next(generated_person())
@@ -111,31 +107,22 @@ class WebTablePage(BasePage):
             self.element_is_visible(self.locators.SUBMIT).click()
             count -= 1
         return [firstname, lastname, str(age), email, str(salary), department]
-            # return firstname, lastname, age, email, salary, department
+           
 
     def check_new_added_person(self):
         people_list = self.elements_are_visible(self.locators.FULL_PEOPLE_LIST)
-        # people_list1 = splitlines(people_list) """!!!"""
-        # return people_list1 """!!!"""
-        # people_list = self.elements_are_present(self.locators.FULL_PEOPLE_LIST).text
-        # print(people_list)
-        # data = [people_list]
         data = []
         for item in people_list:
             data.append(item.text.splitlines())
             # print(item.text)
         # print(data)
         return data
-        # return str(people_list).replace(' ', '').lower()
-        # return [people_list]
-        # return people_list
-
+        
     def search_some_person(self, key_word):
         self.element_is_visible(self.locators.SEARCH_INPUT).send_keys(key_word)
 
     def check_search_person(self):
         delete_button = self.element_is_present(self.locators.DELETE_BUTTON)
-        # row = delete_button.find_element_by_xpath(self.locators.ROW_PARENT)
         row = delete_button.find_element("xpath", self.locators.ROW_PARENT)
         return row.text.splitlines()
 
@@ -190,7 +177,6 @@ class ButtonsPage(BasePage):
 
 """Links testing"""
 class LinksPage(BasePage):
-
     locators = LinksPageLocators()
 
     def check_new_tab_simple_link(self):
@@ -237,7 +223,6 @@ class UploadAndDownloadPage(BasePage):
 
 """Dynamic Properties testing"""
 class DynamicPropertiesPage(BasePage):
-
     locators = DynamicPropertiesPageLocators()
 
     def check_enable_button(self):
@@ -251,9 +236,7 @@ class DynamicPropertiesPage(BasePage):
     def check_chanced_of_color(self):
         color_button = self.element_is_present(self.locators.COLOR_CHANGE_BUTTON)
         color_button_before = color_button.value_of_css_property('color')
-        # time.sleep(5)
         color_button_after = color_button.value_of_css_property('color')
-        # print(color_button_before, color_button_after)
         return color_button_before, color_button_after
 
     def check_appear_of_button(self):
